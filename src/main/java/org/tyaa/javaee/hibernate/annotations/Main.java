@@ -1,6 +1,7 @@
 package org.tyaa.javaee.hibernate.annotations;
 
 import org.hibernate.SessionFactory;
+import org.tyaa.javaee.hibernate.annotations.entity.User;
 
 import javax.persistence.EntityManager;
 
@@ -9,5 +10,15 @@ public class Main {
         SessionFactory sessionFactory =
                 HibernateFactory.getSessionFactory();
         EntityManager em = sessionFactory.createEntityManager();
+
+        User u = new User();
+        u.setFirstName("f1");
+        u.setLastName("l1");
+        u.setAge(20);
+        em.getTransaction().begin();
+        em.persist(u);
+        em.getTransaction().commit();
+        User fromDbUser = em.find(User.class, 1L);
+        System.out.println(fromDbUser.getFirstName());
     }
 }
