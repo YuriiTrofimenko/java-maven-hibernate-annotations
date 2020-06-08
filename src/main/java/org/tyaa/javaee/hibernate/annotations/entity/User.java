@@ -16,6 +16,9 @@ public class User {
     private String firstName;
     @Column(name="last_name", length=25)
     private String lastName;
+    @ManyToOne
+    @JoinColumn(name="role_id")
+    private Role role;
 
     public User() {}
 
@@ -53,5 +56,13 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }

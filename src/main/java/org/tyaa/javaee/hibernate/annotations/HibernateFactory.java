@@ -17,6 +17,7 @@ public class HibernateFactory {
         cfg.setProperty("hibernate.show_sql", "true");
         cfg.setProperty("hibernate.hbm2ddl.auto", "create");
         cfg.addAnnotatedClass(org.tyaa.javaee.hibernate.annotations.entity.User.class);
+        cfg.addAnnotatedClass(org.tyaa.javaee.hibernate.annotations.entity.Role.class);
         sessionFactory = cfg.buildSessionFactory();
     }
 
