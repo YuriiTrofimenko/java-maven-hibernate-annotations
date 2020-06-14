@@ -1,6 +1,8 @@
 package org.tyaa.javaee.hibernate.annotations.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name="Users")
@@ -22,6 +24,9 @@ public class User {
     @OneToOne
     @PrimaryKeyJoinColumn
     private UserDetails userDetails;
+    @ManyToMany
+    @JoinTable(name="UserRepository")
+    private Set<Repository> repositories = new HashSet<Repository>(0);
 
     public User() {}
 
@@ -75,5 +80,13 @@ public class User {
 
     public void setUserDetails(UserDetails userDetails) {
         this.userDetails = userDetails;
+    }
+
+    public Set<Repository> getRepositories() {
+        return repositories;
+    }
+
+    public void setRepositories(Set<Repository> repositories) {
+        this.repositories = repositories;
     }
 }
