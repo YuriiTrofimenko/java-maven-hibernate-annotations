@@ -19,6 +19,9 @@ public class User {
     @ManyToOne
     @JoinColumn(name="role_id")
     private Role role;
+    @OneToOne
+    @PrimaryKeyJoinColumn
+    private UserDetails userDetails;
 
     public User() {}
 
@@ -64,5 +67,13 @@ public class User {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public UserDetails getUserDetails() {
+        return userDetails;
+    }
+
+    public void setUserDetails(UserDetails userDetails) {
+        this.userDetails = userDetails;
     }
 }

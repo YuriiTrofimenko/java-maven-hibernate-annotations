@@ -18,6 +18,7 @@ public class HibernateFactory {
         cfg.setProperty("hibernate.hbm2ddl.auto", "create");
         cfg.addAnnotatedClass(org.tyaa.javaee.hibernate.annotations.entity.User.class);
         cfg.addAnnotatedClass(org.tyaa.javaee.hibernate.annotations.entity.Role.class);
+        cfg.addAnnotatedClass(org.tyaa.javaee.hibernate.annotations.entity.UserDetails.class);
         sessionFactory = cfg.buildSessionFactory();
     }
 
