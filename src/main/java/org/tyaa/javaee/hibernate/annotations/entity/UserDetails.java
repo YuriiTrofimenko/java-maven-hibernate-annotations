@@ -4,26 +4,14 @@ import javax.persistence.*;
 
 @Entity
 @Table(name="UserDetails")
-public class UserDetails {
+public class UserDetails extends AbstractEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
-    private long id;
     @Column(name="text")
     private String text;
     @OneToOne(mappedBy="userDetails")
     private User user;
 
     public UserDetails() {
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getText() {

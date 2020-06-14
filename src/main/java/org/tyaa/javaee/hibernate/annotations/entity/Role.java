@@ -5,12 +5,8 @@ import java.util.Set;
 
 @Entity
 @Table(name="Roles")
-public class Role {
+public class Role extends AbstractEntity {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="id")
-    private Long id;
     @Column(name="title", length=25)
     private String title;
     @OneToMany(mappedBy="role")
@@ -25,14 +21,6 @@ public class Role {
     }
 
     public Role() {}
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getTitle() {
         return title;
