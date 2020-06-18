@@ -1,6 +1,7 @@
 package org.tyaa.javaee.hibernate.annotations.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -9,8 +10,8 @@ public class Role extends AbstractEntity {
 
     @Column(name="title", length=25)
     private String title;
-    @OneToMany(mappedBy="role")
-    private Set<User> users;
+    @OneToMany(mappedBy="role", fetch=FetchType.LAZY)
+    private Set<User> users = new HashSet<>(0);
 
     public Set<User> getUsers() {
         return users;
@@ -34,7 +35,7 @@ public class Role extends AbstractEntity {
     public String toString() {
         return "Role{" +
                 "title='" + title + '\'' +
-                ", users=" + users +
+                ", users_count=" + ((users != null) ? users.size() : "0") +
                 '}';
     }
 }
