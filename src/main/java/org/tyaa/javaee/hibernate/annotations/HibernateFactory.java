@@ -10,12 +10,12 @@ public class HibernateFactory {
     static {
         Configuration cfg = new Configuration();
         cfg.setProperty("connection.driver_class", "com.mysql.jdbc.Driver");
-        cfg.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/hibernate?serverTimezone=UTC");
+        cfg.setProperty("hibernate.connection.url", "jdbc:mysql://localhost:3306/hibernate?serverTimezone=UTC&useSSL=false");
         cfg.setProperty("hibernate.connection.username", "root");
         cfg.setProperty("hibernate.connection.password", "root");
         cfg.setProperty("hibernate.dialect", "org.hibernate.dialect.MySQL57Dialect");
         cfg.setProperty("hibernate.show_sql", "true");
-        cfg.setProperty("hibernate.hbm2ddl.auto", "create");
+        cfg.setProperty("hibernate.hbm2ddl.auto", "create-drop");
         cfg.addAnnotatedClass(org.tyaa.javaee.hibernate.annotations.entity.User.class);
         cfg.addAnnotatedClass(org.tyaa.javaee.hibernate.annotations.entity.Role.class);
         cfg.addAnnotatedClass(org.tyaa.javaee.hibernate.annotations.entity.UserDetails.class);
